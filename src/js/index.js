@@ -29,18 +29,68 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  let nameAux = `<h1>Your name `;
+  if (variables.name !== null) {
+    nameAux = `<h1>${variables.name} `;
+  }
+  if (variables.lastname !== null) {
+    nameAux += `${variables.lastname}</h1>`;
+  } else {
+    nameAux += `Your lastname</h1>`;
+  }
+
+  let roleAux = "<h2>Web Developer</h2>";
+  if (variables.role !== null) {
+    roleAux = `<h2>${variables.role}</h2>`;
+  }
+
+  let locationAux = "<h3>Miami,  ";
+  if (variables.city !== null) {
+    locationAux = `<h3>${variables.city}, `;
+  }
+  if (variables.country !== null) {
+    locationAux += `${variables.country}</h3>`;
+  } else {
+    locationAux += `USA</h3>`;
+  }
+
+  let positionAux = "position-right";
+  if (variables.socialMediaPosition !== "position-right") {
+    positionAux = "position-left";
+  }
+
+  let twitterAux = "alesanchezr";
+  if (variables.twitter !== null) {
+    twitterAux = variables.twitter;
+  }
+
+  let githubAux = "alesanchezr";
+  if (variables.github != "alesanchezr") {
+    githubAux = variables.github;
+  }
+
+  let linkedinAux = "alesanchezr";
+  if (variables.linkedin !== null) {
+    linkedinAux = variables.linkedin;
+  }
+
+  let instagramAux = "alesanchezr";
+  if (variables.instagram !== null) {
+    instagramAux = variables.instagram;
+  }
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/alesanchezr"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://github.com/alesanchezr"><i class="fa fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/alesanchezr"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/alesanchezr"><i class="fa fa-instagram"></i></a></li>
+          ${nameAux}
+          ${roleAux}
+          ${locationAux}
+          <ul class=${positionAux}>
+            <li><a href="https://twitter.com/${twitterAux}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${githubAux}" target="_blank"><i class="fa fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/in/${linkedinAux}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${instagramAux}" target="_blank"><i class="fa fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
